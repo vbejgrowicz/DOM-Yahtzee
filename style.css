@@ -40,12 +40,12 @@ button {
 table, td, th {
   border: 2px solid yellow;
   border-collapse: collapse;
-  font-size: 16px;
+  font-size: 14px;
   box-sizing: border-box;
 }
 
 td, th {
-  width: 95px;
+  width: 80px;
   padding: 3px;
   text-align: center;
 }
