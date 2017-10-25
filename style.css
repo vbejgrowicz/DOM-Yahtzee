@@ -1,6 +1,8 @@
 body {
-  font-family: 'Alef';
+  font-family: 'Coustard';
+  letter-spacing: 2px;
   background-color: #b3b3b3;
+  color: yellow;
   display: flex;
   margin: auto;
   height: 100vh;
