@@ -12,16 +12,19 @@ const controller = ((gameControls) => {
   const roll = () => {
     gameControls.roll();
   };
-  const selectScore = (category, value) => {
-    gameControls.addScore(category, value);
+  const selectScore = (type, category, value) => {
+    gameControls.addScore(type, category, value);
   };
   const setupEventListeners = () => {
     document.querySelector('.roll-btn').addEventListener('click', roll);
 
     document.querySelector('.scorecard').addEventListener('click', (e) => {
       const element = e.toElement;
-      if (availableScores.includes(element.classList[0]) && element.classList[1] !== 'scored') {
-        selectScore(element.classList[0], element.innerText);
+      const sectionID = element.parentElement.id;
+      const category = element.classList[0];
+      const value = parseFloat(element.innerText);
+      if (availableScores.includes(category) && element.classList[1] !== 'scored') {
+        selectScore(sectionID, category, value);
       }
     });
   };

@@ -4,25 +4,42 @@ import Score from './Score';
 const Game = (() => {
   let gameScore;
   let calcScore;
+  let totals;
 
+  const initScores = () => {
+    gameScore = [];
+    calcScore = [];
+    totals = {
+      upperTotal: 0,
+      upperBonus: 0,
+      lowerTotal: 0,
+      total: 0,
+    };
+  };
+  const totalScores = (addedScore) => {
+    totals[`${addedScore.type}Total`] += addedScore.value;
+    totals.total += addedScore.value;
+  };
   return {
     start() {
-      gameScore = [];
-      calcScore = [];
+      initScores();
       DisplayScores.init();
+      DisplayScores.updateTotals(totals);
     },
-    addScore(category, val) {
-      const newScore = new Score(category, val);
+    addScore(type, category, val) {
+      const newScore = new Score(type, category, val);
       gameScore.push(newScore);
-      DisplayScores.addScore(category, val);
+      totalScores(newScore);
+      DisplayScores.updateTotals(totals);
+      DisplayScores.addScore(newScore);
     },
     roll() {
       // remove tests and calculate all possible scores from dice
-      let newCalc = new Score('five', 15);
+      let newCalc = new Score('upper', 'five', 15);
       calcScore.push(newCalc);
-      newCalc = new Score('one', 1);
+      newCalc = new Score('upper', 'one', 1);
       calcScore.push(newCalc);
-      newCalc = new Score('fullhouse', 25);
+      newCalc = new Score('lower', 'fullhouse', 25);
       calcScore.push(newCalc);
       DisplayScores.calc(calcScore);
     },

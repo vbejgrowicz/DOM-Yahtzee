@@ -1,5 +1,6 @@
 export default class Score {
-  constructor(category, value) {
+  constructor(type, category, value) {
+    this.type = type;
     this.category = category;
     this.value = value;
   }

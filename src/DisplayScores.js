@@ -20,9 +20,18 @@ export default class DisplayScores {
       }
     });
   }
-  static addScore(category, value) {
+  static addScore(input) {
+    const { category, value } = input;
     const DOMselector = document.querySelector(`.${category}`);
     DOMselector.classList.add('scored');
     DOMselector.textContent = value;
+  }
+  static updateTotals(totals) {
+    Object.entries(totals).forEach((score) => {
+      const category = score[0];
+      const value = score[1];
+      const DOMselector = document.querySelector(`.${category}`);
+      DOMselector.textContent = value;
+    });
   }
 }
