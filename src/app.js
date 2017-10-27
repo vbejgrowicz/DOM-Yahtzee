@@ -7,5 +7,14 @@ import '../dice/dice-5.png';
 import '../dice/dice-6.png';
 import Game from './Game';
 
-// window.Game = Game;
-Game.start();
+const controller = ((gameControls) => {
+  let availableScores;
+  return {
+    init() {
+      gameControls.start();
+      availableScores = gameControls.DOMstrings();
+    },
+  };
+})(Game);
+
+controller.init();

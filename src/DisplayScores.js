@@ -1,20 +1,21 @@
+const DOMstrings = ['one', 'two', 'three', 'four', 'five', 'six', 'threekind', 'fourkind', 'fullhouse', 'smStraight', 'lgStraight', 'yahtzee'];
+
 export default class DisplayScores {
-  static all(scorecard) {
-    Object.entries(scorecard).forEach((key) => {
-      const category = key[0];
-      const value = key[1];
-      const DOMselector = document.getElementById(`score-${category}`);
-      if (!DOMselector.classList.contains('scored')) {
-        if (value !== null) {
-          DOMselector.textContent = value;
-        } else {
-          DOMselector.textContent = '';
-        }
+  static getDOMstrings() {
+    return DOMstrings;
+  }
+  static init() {
+    DOMstrings.forEach((key) => {
+      const DOMselector = document.querySelector(`.${key}`);
+      DOMselector.classList.remove('scored');
+      DOMselector.textContent = '';
+    });
+  }
       }
     });
   }
   static addScore(category, value) {
-    const DOMselector = document.getElementById(`score-${category}`);
+    const DOMselector = document.querySelector(`.${category}`);
     DOMselector.classList.add('scored');
     DOMselector.textContent = value;
   }
