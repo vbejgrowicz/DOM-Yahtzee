@@ -11,6 +11,12 @@ export default class DisplayScores {
       DOMselector.textContent = '';
     });
   }
+  static calc(scores) {
+    scores.forEach((key) => {
+      const { category, value } = key;
+      const DOMselector = document.querySelector(`.${category}`);
+      if (DOMselector.classList[1] !== 'scored') {
+        DOMselector.textContent = value;
       }
     });
   }

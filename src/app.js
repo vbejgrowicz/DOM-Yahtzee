@@ -9,6 +9,12 @@ import Game from './Game';
 
 const controller = ((gameControls) => {
   let availableScores;
+  const roll = () => {
+    gameControls.roll();
+  };
+  const selectScore = (category, value) => {
+    gameControls.addScore(category, value);
+  };
   const setupEventListeners = () => {
     document.querySelector('.roll-btn').addEventListener('click', roll);
 
