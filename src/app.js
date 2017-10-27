@@ -9,9 +9,20 @@ import Game from './Game';
 
 const controller = ((gameControls) => {
   let availableScores;
+  const setupEventListeners = () => {
+    document.querySelector('.roll-btn').addEventListener('click', roll);
+
+    document.querySelector('.scorecard').addEventListener('click', (e) => {
+      const element = e.toElement;
+      if (availableScores.includes(element.classList[0]) && element.classList[1] !== 'scored') {
+        selectScore(element.classList[0], element.innerText);
+      }
+    });
+  };
   return {
     init() {
       gameControls.start();
+      setupEventListeners();
       availableScores = gameControls.DOMstrings();
     },
   };
