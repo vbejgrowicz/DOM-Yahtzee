@@ -1,12 +1,15 @@
 import DisplayScores from './DisplayScores';
 import Score from './Score';
+import Dice from './Dice';
 
 const Game = (() => {
   let gameScore;
   let calcScore;
   let totals;
+  let dice;
 
   const initScores = () => {
+    dice = [0, 0, 0, 0, 0];
     gameScore = [];
     calcScore = [];
     totals = {
@@ -25,6 +28,7 @@ const Game = (() => {
       initScores();
       DisplayScores.init();
       DisplayScores.updateTotals(totals);
+      Dice.display(dice, 'hide');
     },
     addScore(type, category, val) {
       const newScore = new Score(type, category, val);
