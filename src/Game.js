@@ -38,6 +38,7 @@ const Game = (() => {
       DisplayScores.addScore(newScore);
     },
     roll() {
+      dice = Dice.rollDice(dice);
       // remove tests and calculate all possible scores from dice
       let newCalc = new Score('upper', 'five', 15);
       calcScore.push(newCalc);
