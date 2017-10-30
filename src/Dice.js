@@ -41,4 +41,8 @@ export default class Dice {
     });
     return newArr;
   }
+  static remaining(rolls) {
+    const DOMselector = document.querySelector('.roll-count');
+    DOMselector.textContent = rolls;
+  }
 }
