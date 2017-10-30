@@ -89,6 +89,10 @@ td, th {
   margin: auto;
 }
 
+.noRolls {
+  color: #adadad;
+}
+
 .text {
   display: block;
   text-align: center;

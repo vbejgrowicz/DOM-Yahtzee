@@ -42,7 +42,11 @@ export default class Dice {
     return newArr;
   }
   static remaining(rolls) {
-    const DOMselector = document.querySelector('.roll-count');
-    DOMselector.textContent = rolls;
+    document.querySelector('.roll-count').textContent = rolls;
+    if (rolls === 0) {
+      document.querySelector('.roll-btn').classList.add('noRolls');
+    } else {
+      document.querySelector('.roll-btn').classList.remove('noRolls');
+    }
   }
 }
