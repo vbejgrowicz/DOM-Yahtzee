@@ -6,10 +6,9 @@ const Game = (() => {
   let gameScore;
   let calcScore;
   let totals;
-  let dice;
+  let rollData;
 
   const initScores = () => {
-    dice = [0, 0, 0, 0, 0];
     gameScore = [];
     calcScore = [];
     totals = {
@@ -28,7 +27,7 @@ const Game = (() => {
       initScores();
       DisplayScores.init();
       DisplayScores.updateTotals(totals);
-      Dice.display(dice, 'hide');
+      rollData = Dice.init();
     },
     addScore(type, category, val) {
       const newScore = new Score(type, category, val);
@@ -36,6 +35,7 @@ const Game = (() => {
       totalScores(newScore);
       DisplayScores.updateTotals(totals);
       DisplayScores.addScore(newScore);
+      rollData = Dice.init();
     },
     roll() {
       dice = Dice.rollDice(dice);

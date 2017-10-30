@@ -10,6 +10,21 @@ export default class Dice {
       }
     });
   }
+  static init() {
+    const diceArr = [0, 0, 0, 0, 0];
+    const rollCount = 3;
+    this.display(diceArr, 'hide');
+    this.remaining(rollCount);
+    diceArr.forEach((dice, idx) => {
+      const diceNum = idx + 1;
+      const DOMselector = document.getElementById(`dice${diceNum}`);
+      DOMselector.classList.remove('hold');
+    });
+    return {
+      diceArr,
+      rollCount,
+    };
+  }
   static rollDice(diceArr) {
     this.display(diceArr, 'show');
     const newArr = [];
