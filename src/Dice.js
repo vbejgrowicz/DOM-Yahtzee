@@ -4,9 +4,9 @@ export default class Dice {
       const diceNum = idx + 1;
       const DOMselector = document.getElementById(`dice${diceNum}`);
       if (display === 'show') {
-        DOMselector.style.display = 'block';
+        DOMselector.style.visibility = 'visible';
       } else {
-        DOMselector.style.display = 'none';
+        DOMselector.style.visibility = 'hidden';
       }
     });
   }
