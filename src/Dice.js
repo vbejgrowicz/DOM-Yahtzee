@@ -1,12 +1,13 @@
 export default class Dice {
+  static getDiceElement(diceNum) {
+    return document.getElementById(`dice${diceNum}`);
+  }
   static display(diceArr, display) {
     diceArr.forEach((dice, idx) => {
-      const diceNum = idx + 1;
-      const DOMselector = document.getElementById(`dice${diceNum}`);
       if (display === 'show') {
-        DOMselector.style.visibility = 'visible';
+        this.getDiceElement(idx + 1).style.visibility = 'visible';
       } else {
-        DOMselector.style.visibility = 'hidden';
+        this.getDiceElement(idx + 1).style.visibility = 'hidden';
       }
     });
   }
@@ -16,9 +17,7 @@ export default class Dice {
     this.display(diceArr, 'hide');
     this.remaining(rollCount);
     diceArr.forEach((dice, idx) => {
-      const diceNum = idx + 1;
-      const DOMselector = document.getElementById(`dice${diceNum}`);
-      DOMselector.classList.remove('hold');
+      this.getDiceElement(idx + 1).classList.remove('hold');
     });
     return {
       diceArr,
@@ -29,11 +28,10 @@ export default class Dice {
     this.display(diceArr, 'show');
     const newArr = [];
     diceArr.forEach((dice, idx) => {
-      const diceNum = idx + 1;
-      const DOMselector = document.getElementById(`dice${diceNum}`);
-      if (!DOMselector.classList.contains('hold')) {
+      const diceElement = this.getDiceElement(idx + 1);
+      if (!diceElement.classList.contains('hold')) {
         const roll = Math.round((Math.random() * 5) + 1);
-        DOMselector.src = `dice/dice-${roll}.png`;
+        diceElement.src = `dice/dice-${roll}.png`;
         newArr.push(roll);
       } else {
         newArr.push(dice);
