@@ -12,7 +12,6 @@ const Game = (() => {
   const initScores = () => {
     categories = Game.DOMstrings();
     gameScore = [];
-    calcScore = [];
     totals = {
       upperTotal: 0,
       upperBonus: 0,
@@ -24,18 +23,21 @@ const Game = (() => {
     totals[`${addedScore.type}Total`] += addedScore.value;
     totals.total += addedScore.value;
   };
+  const initTurn = () => {
+    rollData = Dice.init();
+  };
   return {
     start() {
       initScores();
-      rollData = Dice.init();
+      initTurn();
       DisplayScores.updateScoreboard('new', totals);
     },
     addScore(type, category) {
       const newScore = new Score(type, category, rollData.diceArr);
       gameScore.push(newScore);
       totalScores(newScore);
-      rollData = Dice.init();
       DisplayScores.addScore(newScore, totals);
+      initTurn();
     },
     roll() {
       if (rollData.rollCount > 0) {
@@ -46,11 +48,15 @@ const Game = (() => {
       }
     },
     getScores() {
+      calcScore = [];
       categories.forEach((category) => {
         const newCalc = new Score(null, category, rollData.diceArr);
         calcScore.push(newCalc);
       });
-      DisplayScores.calc(calcScore);
+      this.updateCalcScores();
+    },
+    updateCalcScores() {
+      DisplayScores.showCalc(calcScore);
     },
     DOMstrings() {
       return DisplayScores.getDOMstrings();

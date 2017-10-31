@@ -16,7 +16,7 @@ export default class DisplayScores {
     });
     this.updateTotals(totals);
   }
-  static calc(scores) {
+  static showCalc(scores) {
     scores.forEach((key) => {
       const { category, value } = key;
       const DOMselector = document.querySelector(`.${category}`);
