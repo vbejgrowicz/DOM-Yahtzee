@@ -29,8 +29,8 @@ const Game = (() => {
       DisplayScores.updateTotals(totals);
       rollData = Dice.init();
     },
-    addScore(type, category, val) {
-      const newScore = new Score(type, category, val);
+    addScore(type, category) {
+      const newScore = new Score(type, category, rollData.diceArr);
       gameScore.push(newScore);
       totalScores(newScore);
       DisplayScores.updateTotals(totals);

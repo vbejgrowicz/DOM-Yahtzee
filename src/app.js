@@ -22,9 +22,8 @@ const controller = ((gameControls) => {
       const element = e.toElement;
       const sectionID = element.parentElement.id;
       const category = element.classList[0];
-      const value = parseFloat(element.innerText);
       if (availableScores.includes(category) && element.classList[1] !== 'scored') {
-        selectScore(sectionID, category, value);
+        selectScore(sectionID, category);
       }
     });
   };
