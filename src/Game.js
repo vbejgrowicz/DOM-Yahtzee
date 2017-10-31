@@ -7,8 +7,10 @@ const Game = (() => {
   let calcScore;
   let totals;
   let rollData;
+  let categories;
 
   const initScores = () => {
+    categories = Game.DOMstrings();
     gameScore = [];
     calcScore = [];
     totals = {
@@ -42,15 +44,15 @@ const Game = (() => {
         rollData.diceArr = Dice.rollDice(rollData.diceArr);
         rollData.rollCount -= 1;
         Dice.remaining(rollData.rollCount);
-        // remove tests and calculate all possible scores from dice
-        let newCalc = new Score('upper', 'five', 15);
-        calcScore.push(newCalc);
-        newCalc = new Score('upper', 'one', 1);
-        calcScore.push(newCalc);
-        newCalc = new Score('lower', 'fullhouse', 25);
-        calcScore.push(newCalc);
-        DisplayScores.calc(calcScore);
+        this.getScores();
       }
+    },
+    getScores() {
+      categories.forEach((category) => {
+        const newCalc = new Score(null, category, rollData.diceArr);
+        calcScore.push(newCalc);
+      });
+      DisplayScores.calc(calcScore);
     },
     DOMstrings() {
       return DisplayScores.getDOMstrings();
