@@ -1,15 +1,16 @@
 export default class Score {
-  constructor(type, category, dice) {
+  constructor(type, category, diceObj) {
     this.type = type;
     this.category = category;
-    this.value = this.calculate(dice);
+    this.value = this.calculate(diceObj);
   }
-  calculate(dice) {
+  calculate(diceObj) {
+    const diceArr = diceObj.map(die => die.value);
     let score;
-    const count = (arr, num) => {
+    const count = (num) => {
       let total = 0;
-      for (let i = 0; i < arr.length; i += 1) {
-        if (arr[i] === num) {
+      for (let i = 0; i < diceArr.length; i += 1) {
+        if (diceArr[i] === num) {
           total += num;
         }
       }
@@ -17,17 +18,17 @@ export default class Score {
     };
     switch (this.category) {
       case 'one':
-        return count(dice, 1);
+        return count(1);
       case 'two':
-        return count(dice, 2);
+        return count(2);
       case 'three':
-        return count(dice, 3);
+        return count(3);
       case 'four':
-        return count(dice, 4);
+        return count(4);
       case 'five':
-        return count(dice, 5);
+        return count(5);
       case 'six':
-        return count(dice, 6);
+        return count(6);
       default:
         console.log('else');
         return score;

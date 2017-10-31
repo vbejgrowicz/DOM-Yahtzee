@@ -1,8 +1,8 @@
-export default class Dice {
+export default class DisplayTurn {
   static getDiceElement(diceNum) {
     return document.getElementById(`dice${diceNum}`);
   }
-  static display(diceArr, display) {
+  static visibility(diceArr, display) {
     diceArr.forEach((dice, idx) => {
       if (display === 'show') {
         this.getDiceElement(idx + 1).style.visibility = 'visible';
@@ -11,34 +11,25 @@ export default class Dice {
       }
     });
   }
-  static init() {
-    const diceArr = [0, 0, 0, 0, 0];
-    const rollCount = 3;
-    this.display(diceArr, 'hide');
-    this.remaining(rollCount);
-    diceArr.forEach((dice, idx) => {
+  static init(rollData) {
+    this.visibility(rollData.dice, 'hide');
+    this.remaining(rollData.rollCount);
+    rollData.dice.forEach((dice, idx) => {
       this.getDiceElement(idx + 1).classList.remove('hold');
     });
-    return {
-      diceArr,
-      rollCount,
-    };
   }
-  static rollDice(diceArr) {
-    this.display(diceArr, 'show');
-    const newArr = [];
+  static turnInfo(rollData) {
+    this.visibility(rollData.dice, 'show');
+    this.currentDice(rollData.dice);
+    this.remaining(rollData.rollCount);
+  }
+  static currentDice(diceArr) {
     diceArr.forEach((dice, idx) => {
       const diceElement = this.getDiceElement(idx + 1);
-      if (!diceElement.classList.contains('hold')) {
-        const roll = Math.round((Math.random() * 5) + 1);
-        diceElement.src = `dice/dice-${roll}.png`;
-        newArr.push(roll);
-      } else {
-        newArr.push(dice);
-      }
+      diceElement.src = `dice/dice-${dice.value}.png`;
     });
-    return newArr;
   }
+
   static remaining(rolls) {
     document.querySelector('.roll-count').textContent = rolls;
     if (rolls === 0) {

@@ -1,6 +1,7 @@
 import DisplayScores from './DisplayScores';
 import Score from './Score';
-import Dice from './Dice';
+import Turn from './Turn';
+import DisplayTurn from './DisplayTurn';
 
 const Game = (() => {
   let gameScore;
@@ -24,7 +25,8 @@ const Game = (() => {
     totals.total += addedScore.value;
   };
   const initTurn = () => {
-    rollData = Dice.init();
+    rollData = Turn.init();
+    DisplayTurn.init(rollData);
   };
   return {
     start() {
@@ -33,7 +35,7 @@ const Game = (() => {
       DisplayScores.updateScoreboard('new', totals);
     },
     addScore(type, category) {
-      const newScore = new Score(type, category, rollData.diceArr);
+      const newScore = new Score(type, category, rollData.dice);
       gameScore.push(newScore);
       totalScores(newScore);
       DisplayScores.addScore(newScore, totals);
@@ -41,16 +43,15 @@ const Game = (() => {
     },
     roll() {
       if (rollData.rollCount > 0) {
-        rollData.diceArr = Dice.rollDice(rollData.diceArr);
-        rollData.rollCount -= 1;
-        Dice.remaining(rollData.rollCount);
+        rollData = Turn.rollDice(rollData);
+        DisplayTurn.turnInfo(rollData);
         this.getScores();
       }
     },
     getScores() {
       calcScore = [];
       categories.forEach((category) => {
-        const newCalc = new Score(null, category, rollData.diceArr);
+        const newCalc = new Score(null, category, rollData.dice);
         calcScore.push(newCalc);
       });
       this.updateCalcScores();
