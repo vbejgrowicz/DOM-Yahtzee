@@ -43,9 +43,17 @@ const Game = (() => {
     },
     roll() {
       if (rollData.rollCount > 0) {
-        rollData = Turn.rollDice(rollData);
-        DisplayTurn.turnInfo(rollData);
-        this.getScores();
+        DisplayScores.updateScoreboard('active', totals);
+        rollData.rollCount -= 1;
+        const roll = () => {
+          rollData.dice = Turn.rollDice(rollData.dice);
+          DisplayTurn.turnInfo(rollData);
+        };
+        const rollAnim = setInterval(roll, 100);
+        setTimeout(() => {
+          clearInterval(rollAnim);
+          this.getScores();
+        }, 600);
       }
     },
     getScores() {

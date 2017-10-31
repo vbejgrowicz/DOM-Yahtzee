@@ -13,19 +13,16 @@ export default class Turn {
       rollCount,
     };
   }
-  static rollDice(rollData) {
-    const rollsLeft = rollData.rollCount - 1;
+  static rollDice(dice) {
     const nextDice = [];
-    rollData.dice.forEach((currentDie, idx) => {
+    dice.forEach((currentDie, idx) => {
       if (!currentDie.hold) {
         nextDice[idx] = new Die();
       } else {
         nextDice[idx] = currentDie;
       }
     });
-    return {
-      dice: nextDice,
-      rollCount: rollsLeft,
-    };
+    return nextDice;
+  }
   }
 }
