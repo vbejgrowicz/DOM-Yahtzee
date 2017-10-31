@@ -4,12 +4,17 @@ export default class DisplayScores {
   static getDOMstrings() {
     return DOMstrings;
   }
-  static init() {
+  static updateScoreboard(gameStatus, totals) {
     DOMstrings.forEach((key) => {
       const DOMselector = document.querySelector(`.${key}`);
-      DOMselector.classList.remove('scored');
-      DOMselector.textContent = '';
+      if (gameStatus === 'new') {
+        DOMselector.classList.remove('scored');
+      }
+      if (!DOMselector.classList.contains('scored')) {
+        DOMselector.textContent = '';
+      }
     });
+    this.updateTotals(totals);
   }
   static calc(scores) {
     scores.forEach((key) => {
@@ -20,18 +25,18 @@ export default class DisplayScores {
       }
     });
   }
-  static addScore(input) {
+  static addScore(input, totals) {
     const { category, value } = input;
     const DOMselector = document.querySelector(`.${category}`);
     DOMselector.classList.add('scored');
     DOMselector.textContent = value;
+    this.updateScoreboard('active', totals);
   }
   static updateTotals(totals) {
     Object.entries(totals).forEach((score) => {
       const category = score[0];
       const value = score[1];
-      const DOMselector = document.querySelector(`.${category}`);
-      DOMselector.textContent = value;
+      document.querySelector(`.${category}`).textContent = value;
     });
   }
 }

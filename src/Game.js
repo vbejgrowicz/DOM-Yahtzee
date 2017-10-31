@@ -27,17 +27,15 @@ const Game = (() => {
   return {
     start() {
       initScores();
-      DisplayScores.init();
-      DisplayScores.updateTotals(totals);
       rollData = Dice.init();
+      DisplayScores.updateScoreboard('new', totals);
     },
     addScore(type, category) {
       const newScore = new Score(type, category, rollData.diceArr);
       gameScore.push(newScore);
       totalScores(newScore);
-      DisplayScores.updateTotals(totals);
-      DisplayScores.addScore(newScore);
       rollData = Dice.init();
+      DisplayScores.addScore(newScore, totals);
     },
     roll() {
       if (rollData.rollCount > 0) {
