@@ -6,9 +6,9 @@ body {
   display: flex;
   margin: auto;
   height: 100vh;
-  min-height: 650px;
+  min-height: 580px;
   width: 100vw;
-  min-width: 950px;
+  min-width: 840px;
 }
 
 button {
