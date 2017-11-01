@@ -6,8 +6,10 @@ const DisplayTurn = {
     diceArr.forEach((dice, idx) => {
       if (display === 'show') {
         this.getDiceElement(idx).style.visibility = 'visible';
+        document.querySelector('.scorecard').classList.add('active');
       } else {
         this.getDiceElement(idx).style.visibility = 'hidden';
+        document.querySelector('.scorecard').classList.remove('active');
       }
     });
   },
