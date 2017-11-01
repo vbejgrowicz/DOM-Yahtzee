@@ -5,51 +5,76 @@ export default class Score {
     this.value = this.calculate(diceObj);
   }
   calculate(diceObj) {
+    let num;
+    let score = 0;
     const diceArr = diceObj.map(die => die.value);
-    let score;
-    const count = (num) => {
-      score = 0;
-      for (let i = 0; i < diceArr.length; i += 1) {
-        if (diceArr[i] === num) {
-          score += num;
-        }
-      }
-      return score;
+
+    const count = curNum => diceArr.filter(die => die === curNum);
+
+    const counted = {
+      1: count(1).length,
+      2: count(2).length,
+      3: count(3).length,
+      4: count(4).length,
+      5: count(5).length,
+      6: count(6).length,
     };
-    const countInstance = () => {
-      const result = diceArr.reduce((acc, val) => acc.set(val, 1 + (acc.get(val) || 0)), new Map());
-      return result;
-    };
-    const checkInstances = (limit, scoring) => {
-      score = 0;
-      countInstance().forEach((value, key) => {
-        if (value >= limit) {
-          score = scoring || (key * value);
+
+    const forCounted = (limit) => {
+      Object.entries(counted).forEach((current) => {
+        const [n, val] = current;
+        if (val >= limit) {
+          if (limit !== 5) {
+            score = (n * val);
+          } else {
+            score = 50;
+          }
         }
       });
       return score;
     };
+
+    const fullhouseTest = () => {
+      Object.entries(counted).forEach((current) => {
+        if (current[1] === 3) {
+          Object.entries(counted).forEach((cur) => {
+            if (cur[1] === 2) {
+              score = 25;
+            }
+          });
+        }
+      });
+      return score;
+    };
+
     switch (this.category) {
       case 'one':
-        return count(1);
+        num = 1;
+        return counted[num] * num;
       case 'two':
-        return count(2);
+        num = 2;
+        return counted[num] * num;
       case 'three':
-        return count(3);
+        num = 3;
+        return counted[num] * num;
       case 'four':
-        return count(4);
+        num = 4;
+        return counted[num] * num;
       case 'five':
-        return count(5);
+        num = 5;
+        return counted[num] * num;
       case 'six':
-        return count(6);
+        num = 6;
+        return counted[num] * num;
       case 'threekind':
-        return checkInstances(3);
+        return forCounted(3);
       case 'fourkind':
-        return checkInstances(4);
+        return forCounted(4);
+      case 'fullhouse':
+        return fullhouseTest();
       case 'yahtzee':
-        return checkInstances(5, 50);
+        return forCounted(5);
       default:
-        console.log('else');
         return score;
     }
   }
