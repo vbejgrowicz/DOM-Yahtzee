@@ -25,6 +25,13 @@ const controller = ((gameControls) => {
         selectScore(sectionID, category);
       }
     });
+    const diceArr = Array.from(document.querySelectorAll('.dice'));
+    diceArr.forEach((die) => {
+      die.addEventListener(('click'), (e) => {
+        const diceNum = e.target.id;
+        gameControls.holdToggle(diceNum);
+      });
+    });
   };
   return {
     init() {
