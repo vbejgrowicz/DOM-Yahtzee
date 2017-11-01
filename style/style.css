@@ -21,8 +21,8 @@ button {
 
 .game {
   background-color: #3F51B5;
-  height: 600px;
-  width: 900px;
+  height: 540px;
+  width: 800px;
   margin: auto;
   box-shadow: black 0px 0px 8px 2px;
 }
@@ -33,7 +33,7 @@ button {
   margin: 10px;
   font-size: 50px;
   font-weight: bold;
-  height: 80px;
+  height: 70px;
 }
 
 /* Scorecard */
@@ -66,7 +66,7 @@ td, th {
 /* Roll Area */
 .roll-area {
   width: 70%;
-  height: 350px;
+  height: 300px;
   margin: auto;
 }
 
@@ -79,7 +79,7 @@ td, th {
 }
 
 .dice {
-  height: 100px;
+  height: 90px;
   padding: 3px;
   border-radius: 20px;
   box-sizing: content-box;
@@ -91,10 +91,19 @@ td, th {
 }
 
 .roll-btn {
+  padding: 5px;
   height: 40px;
   font-size: 22px;
   display: flex;
   margin: auto;
+}
+
+.new-game-btn {
+  padding: 5px;
+  margin: 15px auto;
+  font-size: 30px;
+  font-weight: bold;
+  display: flex;
 }
 
 .noRolls {
@@ -104,6 +113,5 @@ td, th {
 .text {
   display: block;
   text-align: center;
-  margin: 10px;
   font-size: 14px;
 }
