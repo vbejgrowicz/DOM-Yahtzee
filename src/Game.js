@@ -56,6 +56,10 @@ const Game = (() => {
         }, 600);
       }
     },
+    holdToggle(diceNum) {
+      rollData.dice[diceNum] = Turn.holdDice(rollData.dice[diceNum]);
+      DisplayTurn.holdDice(diceNum);
+    },
     getScores() {
       calcScore = [];
       categories.forEach((category) => {

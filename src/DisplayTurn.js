@@ -11,6 +11,9 @@ const DisplayTurn = {
       }
     });
   },
+  holdDice(diceNum) {
+    this.getDiceElement(diceNum).classList.toggle('hold');
+  },
   init(rollData) {
     this.visibility(rollData.dice, 'hide');
     this.remaining(rollData.rollCount);

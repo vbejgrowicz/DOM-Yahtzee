@@ -1,3 +1,8 @@
+/*
+eslint no-param-reassign:
+["error", { "props": true, "ignorePropertyModificationsFor": ["die"] }]
+*/
+
 import Die from './Die';
 
 const Turn = {
@@ -23,6 +28,14 @@ const Turn = {
       }
     });
     return nextDice;
+  },
+  holdDice(die) {
+    if (!die.hold) {
+      die.hold = true;
+    } else {
+      die.hold = false;
+    }
+    return die;
   },
 };
 
