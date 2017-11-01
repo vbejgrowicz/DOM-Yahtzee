@@ -1,10 +1,10 @@
 const DOMstrings = ['one', 'two', 'three', 'four', 'five', 'six', 'threekind', 'fourkind', 'fullhouse', 'smStraight', 'lgStraight', 'yahtzee'];
 
-export default class DisplayScores {
-  static getDOMstrings() {
+const DisplayScores = {
+  getDOMstrings() {
     return DOMstrings;
-  }
-  static updateScoreboard(gameStatus, totals) {
+  },
+  updateScoreboard(gameStatus, totals) {
     DOMstrings.forEach((key) => {
       const DOMselector = document.querySelector(`.${key}`);
       if (gameStatus === 'new') {
@@ -15,28 +15,29 @@ export default class DisplayScores {
       }
     });
     this.updateTotals(totals);
-  }
-  static showCalc(scores) {
+  },
+  showCalc(scores) {
     scores.forEach((key) => {
       const { category, value } = key;
       const DOMselector = document.querySelector(`.${category}`);
-      if (DOMselector.classList[1] !== 'scored') {
+      if (!DOMselector.classList.contains('scored')) {
         DOMselector.textContent = value;
       }
     });
-  }
-  static addScore(input, totals) {
+  },
+  addScore(input, totals) {
     const { category, value } = input;
     const DOMselector = document.querySelector(`.${category}`);
     DOMselector.classList.add('scored');
     DOMselector.textContent = value;
     this.updateScoreboard('active', totals);
-  }
-  static updateTotals(totals) {
+  },
+  updateTotals(totals) {
     Object.entries(totals).forEach((score) => {
-      const category = score[0];
-      const value = score[1];
+      const [category, value] = score;
       document.querySelector(`.${category}`).textContent = value;
     });
-  }
-}
+  },
+};
+
+export default DisplayScores;

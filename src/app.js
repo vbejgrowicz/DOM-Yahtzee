@@ -19,10 +19,9 @@ const controller = ((gameControls) => {
     document.querySelector('.roll-btn').addEventListener('click', roll);
 
     document.querySelector('.scorecard').addEventListener('click', (e) => {
-      const element = e.toElement;
-      const sectionID = element.parentElement.id;
-      const category = element.classList[0];
-      if (availableScores.includes(category) && element.classList[1] !== 'scored') {
+      const sectionID = e.target.parentElement.id;
+      const category = e.target.className;
+      if (availableScores.includes(category) && !category.includes('scored')) {
         selectScore(sectionID, category);
       }
     });
