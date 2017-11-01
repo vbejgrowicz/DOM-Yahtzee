@@ -12,11 +12,15 @@ const controller = ((gameControls) => {
   const roll = () => {
     gameControls.roll();
   };
+  const newGame = () => {
+    gameControls.start();
+  };
   const selectScore = (type, category, value) => {
     gameControls.addScore(type, category, value);
   };
   const setupEventListeners = () => {
     document.querySelector('.roll-btn').addEventListener('click', roll);
+    document.querySelector('.new-game-btn').addEventListener('click', newGame);
 
     document.querySelector('.scorecard').addEventListener('click', (e) => {
       const scorecard = e.target.offsetParent.className;
@@ -36,7 +40,7 @@ const controller = ((gameControls) => {
   };
   return {
     init() {
-      gameControls.start();
+      newGame();
       setupEventListeners();
       availableScores = gameControls.DOMstrings();
     },
