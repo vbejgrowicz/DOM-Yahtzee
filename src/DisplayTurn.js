@@ -1,13 +1,13 @@
 const DisplayTurn = {
   getDiceElement(diceNum) {
-    return document.getElementById(`dice${diceNum}`);
+    return document.getElementById(`${diceNum}`);
   },
   visibility(diceArr, display) {
     diceArr.forEach((dice, idx) => {
       if (display === 'show') {
-        this.getDiceElement(idx + 1).style.visibility = 'visible';
+        this.getDiceElement(idx).style.visibility = 'visible';
       } else {
-        this.getDiceElement(idx + 1).style.visibility = 'hidden';
+        this.getDiceElement(idx).style.visibility = 'hidden';
       }
     });
   },
@@ -15,7 +15,7 @@ const DisplayTurn = {
     this.visibility(rollData.dice, 'hide');
     this.remaining(rollData.rollCount);
     rollData.dice.forEach((dice, idx) => {
-      this.getDiceElement(idx + 1).classList.remove('hold');
+      this.getDiceElement(idx).classList.remove('hold');
     });
   },
   turnInfo(rollData) {
@@ -25,7 +25,7 @@ const DisplayTurn = {
   },
   currentDice(diceArr) {
     diceArr.forEach((dice, idx) => {
-      const diceElement = this.getDiceElement(idx + 1);
+      const diceElement = this.getDiceElement(idx);
       diceElement.src = `dice/dice-${dice.value}.png`;
     });
   },
