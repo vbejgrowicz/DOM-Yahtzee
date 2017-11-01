@@ -80,6 +80,14 @@ td, th {
 
 .dice {
   height: 100px;
+  padding: 3px;
+  border-radius: 20px;
+  box-sizing: content-box;
+  border: 5px solid transparent;
+}
+
+.hold {
+  border-color: yellow;
 }
 
 .roll-btn {
