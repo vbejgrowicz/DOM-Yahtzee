@@ -22,6 +22,10 @@ const Game = (() => {
   };
   const totalScores = (addedScore) => {
     totals[`${addedScore.type}Total`] += addedScore.value;
+    if (totals.upperTotal > 62 && totals.upperBonus !== 35) {
+      totals.upperBonus = 35;
+      totals.total += totals.upperBonus;
+    }
     totals.total += addedScore.value;
   };
   const initTurn = () => {
