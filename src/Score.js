@@ -8,6 +8,7 @@ export default class Score {
     let num;
     let score = 0;
     const diceArr = diceObj.map(die => die.value);
+    const sumDice = diceArr.reduce((a, b) => a + b, 0);
 
     const count = curNum => diceArr.filter(die => die === curNum);
 
@@ -21,17 +22,14 @@ export default class Score {
     };
 
     const forCounted = (limit) => {
+      let result = false;
       Object.entries(counted).forEach((current) => {
-        const [n, val] = current;
+        const val = current[1];
         if (val >= limit) {
-          if (limit !== 5) {
-            score = (n * val);
-          } else {
-            score = 50;
-          }
+          result = true;
         }
       });
-      return score;
+      return result;
     };
 
     const fullhouseTest = () => {
@@ -67,13 +65,22 @@ export default class Score {
         num = 6;
         return counted[num] * num;
       case 'threekind':
-        return forCounted(3);
+        if (forCounted(3)) {
+          score = sumDice;
+        }
+        return score;
       case 'fourkind':
-        return forCounted(4);
+        if (forCounted(4)) {
+          score = sumDice;
+        }
+        return score;
       case 'fullhouse':
         return fullhouseTest();
       case 'yahtzee':
-        return forCounted(5);
+        if (forCounted(5)) {
+          score = 50;
+        }
+        return score;
       default:
         return score;
     }
