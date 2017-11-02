@@ -81,6 +81,9 @@ export default class Score {
           score = 50;
         }
         return score;
+      case 'chance':
+        score = sumDice;
+        return score;
       default:
         return score;
     }

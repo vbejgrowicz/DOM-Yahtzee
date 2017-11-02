@@ -8,6 +8,8 @@
   <body>
     <div class="game">
       <span class="title">Yahtzee</span>
+      <span class="gameScore">Total Score: <span class="total">0</span></span>
+
       <table class="scorecard">
         <tr class="category">
           <th rowspan="2">Upper Section</th>
@@ -27,8 +29,8 @@
           <td class="four">0</td>
           <td class="five">0</td>
           <td class="six">0</td>
-          <td class="upperTotal">0</td>
-          <td class="upperBonus">0</td>
+          <td class="upperTotal total">0</td>
+          <td class="upperBonus total">0</td>
         </tr>
         <tr class="category">
           <th rowspan="2">Lower Section</th>
@@ -38,8 +40,8 @@
           <th>Small Straight</th>
           <th>Large Straight</th>
           <th>Yahtzee!</th>
+          <th>Chance</th>
           <th>Lower Total</th>
-          <th>Total Score</th>
         </tr>
         <tr class="scores" id="lower">
           <td class="threekind">0</td>
@@ -48,8 +50,8 @@
           <td class="smStraight">0</td>
           <td class="lgStraight">0</td>
           <td class="yahtzee">0</td>
-          <td class="lowerTotal">0</td>
-          <td class="total">0</td>
+          <td class="chance">0</td>
+          <td class="lowerTotal total">0</td>
         </tr>
       </table>
       <div class="roll-area">
