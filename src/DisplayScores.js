@@ -5,6 +5,7 @@ const DisplayScores = {
     return DOMstrings;
   },
   updateScoreboard(gameStatus, totals) {
+    const arrScored = [];
     DOMstrings.forEach((key) => {
       const DOMselector = document.querySelector(`.${key}`);
       if (gameStatus === 'new') {
@@ -12,9 +13,19 @@ const DisplayScores = {
       }
       if (!DOMselector.classList.contains('scored')) {
         DOMselector.textContent = '';
+        arrScored.push(false);
       }
     });
     this.updateTotals(totals);
+    const status = this.checkWon(arrScored);
+    return status;
+  },
+  checkWon(arrScored) {
+    let status = 'active';
+    if (!arrScored.includes(false)) {
+      status = 'winner';
+    }
+    return status;
   },
   showCalc(scores) {
     scores.forEach((key) => {
@@ -25,12 +36,12 @@ const DisplayScores = {
       }
     });
   },
-  addScore(input, totals) {
+  addScore(input, totals, status) {
     const { category, value } = input;
     const DOMselector = document.querySelector(`.${category}`);
     DOMselector.classList.add('scored');
     DOMselector.textContent = value;
-    this.updateScoreboard('active', totals);
+    return this.updateScoreboard(status, totals);
   },
   updateTotals(totals) {
     Object.entries(totals).forEach((score) => {

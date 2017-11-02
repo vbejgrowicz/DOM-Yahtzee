@@ -9,9 +9,11 @@ const Game = (() => {
   let totals;
   let rollData;
   let categories;
+  let gameStatus;
 
   const initScores = () => {
     categories = Game.DOMstrings();
+    gameStatus = 'new';
     gameScore = [];
     totals = {
       upperTotal: 0,
@@ -36,18 +38,24 @@ const Game = (() => {
     start() {
       initScores();
       initTurn();
-      DisplayScores.updateScoreboard('new', totals);
+      DisplayTurn.game(gameStatus);
+      DisplayScores.updateScoreboard(gameStatus, totals);
     },
     addScore(type, category) {
       const newScore = new Score(type, category, rollData.dice);
       gameScore.push(newScore);
       totalScores(newScore);
-      DisplayScores.addScore(newScore, totals);
-      initTurn();
+      gameStatus = DisplayScores.addScore(newScore, totals, gameStatus);
+      if (gameStatus === 'active') {
+        initTurn();
+      } else {
+        DisplayTurn.game(gameStatus);
+      }
     },
     roll() {
+      gameStatus = 'active';
       if (rollData.rollCount > 0) {
-        DisplayScores.updateScoreboard('active', totals);
+        DisplayScores.updateScoreboard(gameStatus, totals);
         rollData.rollCount -= 1;
         const roll = () => {
           rollData.dice = Turn.rollDice(rollData.dice);

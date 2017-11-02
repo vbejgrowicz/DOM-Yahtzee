@@ -42,6 +42,15 @@ const DisplayTurn = {
       document.querySelector('.roll-btn').classList.remove('noRolls');
     }
   },
+  game(status) {
+    if (status === 'winner') {
+      document.querySelector('.dice-area').style.display = 'none';
+      document.querySelector('.game-over').style.display = 'flex';
+    } else {
+      document.querySelector('.dice-area').style.display = 'flex';
+      document.querySelector('.game-over').style.display = 'none';
+    }
+  },
 };
 
 export default DisplayTurn;
