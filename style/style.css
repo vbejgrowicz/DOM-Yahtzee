@@ -1,6 +1,6 @@
 body {
   font-family: 'Coustard';
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   background-color: #b3b3b3;
   color: yellow;
   display: flex;
@@ -9,11 +9,12 @@ body {
   min-height: 580px;
   width: 100vw;
   min-width: 840px;
+  text-align: center;
 }
 
 button {
   font-family: 'Coustard';
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   background: none;
   border: none;
   color: yellow;
@@ -29,11 +30,15 @@ button {
 
 .title {
   display: block;
-  text-align: center;
-  margin: 10px;
   font-size: 50px;
   font-weight: bold;
-  height: 70px;
+  height: auto;
+}
+
+.gameScore {
+  display: block;
+  padding-bottom: 5px;
+  font-size: 20px;
 }
 
 /* Scorecard */
@@ -59,14 +64,14 @@ td, th {
   color: #adadad;
 }
 
-.scored {
+.scored, .total {
   color: yellow;
 }
 
 /* Roll Area */
 .roll-area {
   width: 70%;
-  height: 300px;
+  height: 53%;
   margin: auto;
 }
 
@@ -112,6 +117,5 @@ td, th {
 
 .text {
   display: block;
-  text-align: center;
   font-size: 14px;
 }
