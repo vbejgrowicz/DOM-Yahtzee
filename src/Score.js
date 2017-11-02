@@ -15,7 +15,7 @@ export default class Score {
       five: 5,
       six: 6,
     };
-    const diceArr = diceObj.map(die => die.value);
+    const diceArr = diceObj.map(die => die.value).sort();
     const sumDice = diceArr.reduce((a, b) => a + b, 0);
     const isUnique = [...new Set(diceArr)];
 
@@ -30,6 +30,20 @@ export default class Score {
       });
       return score;
     };
+
+    const checkStraight = (sizeScore) => {
+      let val = 0;
+      while (val < isUnique.length - 1) {
+        if ((isUnique[val + 1] - isUnique[val]) === 1) {
+          val += 1;
+        } else {
+          return 0;
+        }
+      }
+      score = sizeScore;
+      return score;
+    };
+
 
     switch (this.category) {
       case 'threekind':
@@ -48,6 +62,16 @@ export default class Score {
           if (numOf === 2 || numOf === 3) {
             score = 25;
           }
+        }
+        return score;
+      case 'smStraight':
+        if (isUnique.length >= 4) {
+          score = checkStraight(30);
+        }
+        return score;
+      case 'lgStraight':
+        if (isUnique.length === 5) {
+          score = checkStraight(40);
         }
         return score;
       case 'yahtzee':
