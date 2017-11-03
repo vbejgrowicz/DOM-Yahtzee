@@ -3,13 +3,18 @@
   <head>
     <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css?family=Coustard" rel="stylesheet">
+    <script src="https://use.fontawesome.com/af46b47400.js"></script>
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
     <div class="game">
-      <div style="height: 70px;">
-        <span class="title">Yahtzee</span>
-        <span class="userScore">High Score: <span class="highScore">0</span></span>
+      <div class="rules">
+        <i class="close-btn fa fa-window-close" aria-hidden="true"></i>
+      </div>
+      <div class="title-block">
+        <div class="seeRules">Rules</div>
+        <div class="title">Yahtzee</div>
+        <div class="userScore">High Score: <div class="highScore">0</div></div>
       </div>
       <span class="gameScore">Total Score: <span class="total">0</span></span>
       <table class="scorecard">

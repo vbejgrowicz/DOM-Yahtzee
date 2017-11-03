@@ -4,7 +4,6 @@ import Turn from './Turn';
 import DisplayTurn from './DisplayTurn';
 
 const Game = (() => {
-  let highScore;
   let gameScore;
   let calcScore;
   let totals;
