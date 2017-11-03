@@ -5,6 +5,15 @@ import '../dice/dice-3.png';
 import '../dice/dice-4.png';
 import '../dice/dice-5.png';
 import '../dice/dice-6.png';
+import '../dice/Fives.png';
+import '../dice/LargeStraight.png';
+import '../dice/Ones_Fullhouse.png';
+import '../dice/Sixes_FourKind.png';
+import '../dice/SmallStraight.png';
+import '../dice/ThreeKind.png';
+import '../dice/Twos_Fours.png';
+import '../dice/Yahtzee.png';
+
 import Game from './Game';
 
 const controller = ((gameControls) => {

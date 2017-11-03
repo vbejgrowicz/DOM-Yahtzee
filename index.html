@@ -10,9 +10,103 @@
     <div class="game">
       <div class="rules">
         <i class="close-btn fa fa-window-close" aria-hidden="true"></i>
+        <div class="instructions">
+          <div class="how-to">How To Play
+            <div style="font-size: 13px;">
+              Click Roll Dice to roll. Select the dice to hold. Select the box you want to score.
+            </div>
+          </div>
+          <div style="margin-top: 10px" class="how-to">Scoring</div>
+          <div style="display: flex; justify-content: space-around">
+            <table style="display: inline-flex" class="help">
+              <tr>
+                <th>Category</th>
+                <th></th>
+                <th>Score</th>
+              </tr>
+              <tr>
+                <td>Ones</td>
+                <td><img src="dice/Ones_Fullhouse.png" class="helper-img"></td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>Twos</td>
+                <td><img src="dice/Twos_Fours.png" class="helper-img"></td>
+                <td>4</td>
+              </tr>
+              <tr>
+                <td>Threes</td>
+                <td><img src="dice/Sixes_FourKind.png" class="helper-img"></td>
+                <td>3</td>
+              </tr>
+              <tr>
+                <td>Fours</td>
+                <td><img src="dice/Twos_Fours.png" class="helper-img"></td>
+                <td>8</td>
+              </tr>
+              <tr>
+                <td>Fives</td>
+                <td><img src="dice/Fives.png" class="helper-img"></td>
+                <td>15</td>
+              </tr>
+              <tr>
+                <td>Sixes</td>
+                <td><img src="dice/Sixes_FourKind.png" class="helper-img"></td>
+                <td>18</td>
+              </tr>
+              <tr>
+                <td>Upper Bonus</td>
+                <td>Upper Total > 62 </td>
+                <td>35</td>
+              </tr>
+            </table>
+            <table style="display: inline-flex" class="help">
+              <tr>
+                <th>Category</th>
+                <th></th>
+                <th>Score</th>
+              </tr>
+              <tr>
+                <td>Three Of a Kind</td>
+                <td><img src="dice/ThreeKind.png" class="helper-img"></td>
+                <td>19</td>
+              </tr>
+              <tr>
+                <td>Four Of a Kind</td>
+                <td><img src="dice/Sixes_FourKind.png" class="helper-img"></td>
+                <td>21</td>
+              </tr>
+              <tr>
+                <td>Fullhouse</td>
+                <td><img src="dice/Ones_Fullhouse.png" class="helper-img"></td>
+                <td>25</td>
+              </tr>
+              <tr>
+                <td>Small Straight</td>
+                <td><img src="dice/SmallStraight.png" class="helper-img"></td>
+                <td>30</td>
+              </tr>
+              <tr>
+                <td>Large Straight</td>
+                <td><img src="dice/LargeStraight.png" class="helper-img"></td>
+                <td>40</td>
+              </tr>
+              <tr>
+                <td>Yahtzee</td>
+                <td><img src="dice/Yahtzee.png" class="helper-img"></td>
+                <td>50</td>
+              </tr>
+              <tr>
+                <td>Chance</td>
+                <td><img src="dice/Twos_Fours.png" class="helper-img"></td>
+                <td>13</td>
+              </tr>
+            </table>
+          </div>
+        </div>
       </div>
       <div class="title-block">
-        <div class="seeRules">Rules</div>
+        <div class="seeRules">How To Play</div>
         <div class="title">Yahtzee</div>
         <div class="userScore">High Score: <div class="highScore">0</div></div>
       </div>
@@ -20,12 +114,12 @@
       <table class="scorecard">
         <tr class="category">
           <th rowspan="2">Upper Section</th>
-          <th>One's</th>
-          <th>Two's</th>
-          <th>Three's</th>
-          <th>Four's</th>
-          <th>Five's</th>
-          <th>Six's</th>
+          <th>Ones</th>
+          <th>Twos</th>
+          <th>Threes</th>
+          <th>Fours</th>
+          <th>Fives</th>
+          <th>Sixes</th>
           <th>Upper Total</th>
           <th>Upper Bonus</th>
         </tr>
