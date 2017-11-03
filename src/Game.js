@@ -4,6 +4,7 @@ import Turn from './Turn';
 import DisplayTurn from './DisplayTurn';
 
 const Game = (() => {
+  let highScore;
   let gameScore;
   let calcScore;
   let totals;
@@ -20,6 +21,7 @@ const Game = (() => {
       upperBonus: 0,
       lowerTotal: 0,
       total: 0,
+      highScore: localStorage.getItem('score') || 0,
     };
   };
   const totalScores = (addedScore) => {
@@ -49,7 +51,7 @@ const Game = (() => {
       if (gameStatus === 'active') {
         initTurn();
       } else {
-        DisplayTurn.game(gameStatus);
+        DisplayTurn.game(gameStatus, totals);
       }
     },
     roll() {

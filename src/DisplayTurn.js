@@ -42,10 +42,17 @@ const DisplayTurn = {
       document.querySelector('.roll-btn').classList.remove('noRolls');
     }
   },
-  game(status) {
+  game(status, gameTotals) {
     if (status === 'winner') {
       document.querySelector('.dice-area').style.display = 'none';
-      document.querySelector('.game-over').style.display = 'flex';
+      document.querySelector('.game-over').style.display = 'block';
+      if (gameTotals.highScore < gameTotals.total) {
+        document.querySelector('.winner').style.display = 'block';
+        document.querySelector('.try-again').style.display = 'none';
+      } else {
+        document.querySelector('.try-again').style.display = 'block';
+        document.querySelector('.winner').style.display = 'none';
+      }
     } else {
       document.querySelector('.dice-area').style.display = 'flex';
       document.querySelector('.game-over').style.display = 'none';
