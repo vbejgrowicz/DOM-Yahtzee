@@ -15,12 +15,17 @@ const controller = ((gameControls) => {
   const newGame = () => {
     gameControls.start();
   };
+  const rules = () => {
+    document.querySelector('.rules').classList.toggle('open');
+  };
   const selectScore = (type, category, value) => {
     gameControls.addScore(type, category, value);
   };
   const setupEventListeners = () => {
     document.querySelector('.roll-btn').addEventListener('click', roll);
     document.querySelector('.new-game-btn').addEventListener('click', newGame);
+    document.querySelector('.seeRules').addEventListener('click', rules);
+    document.querySelector('.close-btn').addEventListener('click', rules);
 
     document.querySelector('.scorecard').addEventListener('click', (e) => {
       const scorecard = e.target.offsetParent.className;
