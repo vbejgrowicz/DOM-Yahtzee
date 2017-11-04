@@ -31,7 +31,7 @@ const config = {
       {
         test: /\.(png|svg|jpg|gif)$/,
         exclude: /node_modules/,
-        loader: 'file-loader?name=/dice/[name].[ext]',
+        loader: 'file-loader?name=/assets/[name].[ext]',
       },
     ],
   },

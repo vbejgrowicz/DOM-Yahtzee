@@ -31,7 +31,7 @@ const DisplayTurn = {
   currentDice(diceArr) {
     diceArr.forEach((dice, idx) => {
       const diceElement = this.getDiceElement(idx);
-      diceElement.src = `dice/dice-${dice.value}.png`;
+      diceElement.src = `assets/dice-${dice.value}.png`;
     });
   },
   remaining(rolls) {

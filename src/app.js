@@ -1,18 +1,18 @@
 import '../style/style.css';
-import '../dice/dice-1.png';
-import '../dice/dice-2.png';
-import '../dice/dice-3.png';
-import '../dice/dice-4.png';
-import '../dice/dice-5.png';
-import '../dice/dice-6.png';
-import '../dice/Fives.png';
-import '../dice/LargeStraight.png';
-import '../dice/Ones_Fullhouse.png';
-import '../dice/Sixes_FourKind.png';
-import '../dice/SmallStraight.png';
-import '../dice/ThreeKind.png';
-import '../dice/Twos_Fours.png';
-import '../dice/Yahtzee.png';
+import '../assets/dice-1.png';
+import '../assets/dice-2.png';
+import '../assets/dice-3.png';
+import '../assets/dice-4.png';
+import '../assets/dice-5.png';
+import '../assets/dice-6.png';
+import '../assets/Fives.png';
+import '../assets/LargeStraight.png';
+import '../assets/Ones_Fullhouse.png';
+import '../assets/Sixes_FourKind.png';
+import '../assets/SmallStraight.png';
+import '../assets/ThreeKind.png';
+import '../assets/Twos_Fours.png';
+import '../assets/Yahtzee.png';
 
 import Game from './Game';
 
