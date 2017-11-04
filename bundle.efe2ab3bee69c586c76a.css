@@ -1,0 +1,226 @@
+body {
+  font-family: 'Coustard';
+  letter-spacing: 1px;
+  background-color: #b3b3b3;
+  color: yellow;
+  display: flex;
+  margin: auto;
+  height: 100vh;
+  min-height: 580px;
+  width: 100vw;
+  min-width: 840px;
+  text-align: center;
+}
+
+button {
+  font-family: 'Coustard';
+  letter-spacing: 1px;
+  background: none;
+  border: none;
+  color: yellow;
+}
+
+.game {
+  background-color: #3F51B5;
+  height: 540px;
+  width: 800px;
+  margin: auto;
+  box-shadow: black 0px 0px 8px 2px;
+}
+
+.title-block {
+   display: flex;
+   margin: 5px 10px;
+   height: 60px;
+}
+
+.seeRules {
+  width: 33.33%;
+  display: inline-flex;
+  justify-content: flex-start;
+  font-size: 20px;
+}
+
+.title {
+  margin: -5px 0px;
+  width: 33.33%;
+  display: inline-flex;
+  justify-content: center;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.userScore {
+  width: 33.33%;
+  display: inline-flex;
+  white-space: pre;
+  justify-content: flex-end;
+  font-size: 20px;
+}
+
+.gameScore {
+  display: block;
+  padding-bottom: 5px;
+  font-size: 20px;
+}
+
+/* Rules */
+.rules {
+  display: none;
+  background-color: yellow;
+  position: absolute;
+  height: 450px;
+  width: 760px;
+  margin-top: 70px;
+  margin-left: 20px;
+  text-align: left;
+}
+
+.open {
+  display: block;
+}
+
+.close-btn {
+  color: red;
+  font-size: 40px;
+  float: right;
+  padding: 5px;
+}
+
+.instructions {
+  color: #3F51B5;
+  margin: 20px;
+}
+
+.help td {
+  border: 2px solid #3F51B5;
+  font-size: 13px;
+  box-sizing: border-box;
+  width: auto;
+  height: 42px;
+  padding: 5px;
+}
+
+.help th {
+  width: auto;
+  padding: 5px;
+  box-sizing: border-box;
+  border: 2px solid #3F51B5;
+  color: yellow;
+  background-color: #3F51B5;
+}
+
+.how-to {
+  font-size: 18px;
+}
+
+.helper-img {
+  height: 30px;
+  vertical-align: middle;
+}
+
+ /*Scorecard */
+table {
+  border-collapse: collapse;
+}
+
+.scorecard td, th {
+  border: 2px solid yellow;
+  font-size: 14px;
+  box-sizing: border-box;
+  width: 80px;
+  padding: 3px;
+}
+
+.scorecard {
+  margin: auto;
+  height: 150px;
+}
+
+.scores {
+  color: #adadad;
+}
+
+.scored, .total {
+  color: yellow;
+}
+
+/* Roll Area */
+.roll-area {
+  width: 70%;
+  height: 53%;
+  margin: auto;
+}
+
+.display {
+  display: flex;
+}
+
+.dice-area {
+  display: none;
+  width: 100%;
+  height: 50%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.game-over {
+  color: white;
+  display: none;
+  width: 100%;
+  height: 50%;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.end-text {
+  display: block;
+  line-height: 70px;
+}
+
+.winner {
+  text-shadow: 1px 2px 1px #fff;
+  color: #01e00a;
+}
+
+.try-again {
+  text-shadow: 1px 2px 1px #fff;
+  color: red;
+}
+
+.dice {
+  height: 90px;
+  padding: 3px;
+  border-radius: 20px;
+  box-sizing: content-box;
+  border: 5px solid transparent;
+}
+
+.hold {
+  border-color: yellow;
+}
+
+.roll-btn {
+  padding: 5px;
+  height: 40px;
+  font-size: 22px;
+  display: flex;
+  margin: auto;
+}
+
+.new-game-btn {
+  padding: 5px;
+  margin: 15px auto;
+  font-size: 30px;
+  font-weight: bold;
+  display: flex;
+}
+
+.noRolls {
+  color: #adadad;
+}
+
+.text {
+  display: block;
+  font-size: 14px;
+}

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Coustard" rel="stylesheet">
+    <script src="https://use.fontawesome.com/af46b47400.js"></script>
+    <title>Yahtzee</title>
+  <link href="bundle.efe2ab3bee69c586c76a.css" rel="stylesheet"></head>
+  <body>
+    <div class="game">
+      <div class="rules">
+        <i class="close-btn fa fa-window-close" aria-hidden="true"></i>
+        <div class="instructions">
+          <div class="how-to">How To Play
+            <div style="font-size: 13px;">
+              Click Roll Dice to roll. Select the dice to hold. Select the box you want to score.
+            </div>
+          </div>
+          <div style="margin-top: 10px" class="how-to">Scoring</div>
+          <div style="display: flex; justify-content: space-around">
+            <table style="display: inline-flex" class="help">
+              <tr>
+                <th>Category</th>
+                <th></th>
+                <th>Score</th>
+              </tr>
+              <tr>
+                <td>Ones</td>
+                <td><img src="assets/Ones_Fullhouse.png" class="helper-img"></td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>Twos</td>
+                <td><img src="assets/Twos_Fours.png" class="helper-img"></td>
+                <td>4</td>
+              </tr>
+              <tr>
+                <td>Threes</td>
+                <td><img src="assets/Sixes_FourKind.png" class="helper-img"></td>
+                <td>3</td>
+              </tr>
+              <tr>
+                <td>Fours</td>
+                <td><img src="assets/Twos_Fours.png" class="helper-img"></td>
+                <td>8</td>
+              </tr>
+              <tr>
+                <td>Fives</td>
+                <td><img src="assets/Fives.png" class="helper-img"></td>
+                <td>15</td>
+              </tr>
+              <tr>
+                <td>Sixes</td>
+                <td><img src="assets/Sixes_FourKind.png" class="helper-img"></td>
+                <td>18</td>
+              </tr>
+              <tr>
+                <td>Upper Bonus</td>
+                <td>Upper Total > 62 </td>
+                <td>35</td>
+              </tr>
+            </table>
+            <table style="display: inline-flex" class="help">
+              <tr>
+                <th>Category</th>
+                <th></th>
+                <th>Score</th>
+              </tr>
+              <tr>
+                <td>Three Of a Kind</td>
+                <td><img src="assets/ThreeKind.png" class="helper-img"></td>
+                <td>19</td>
+              </tr>
+              <tr>
+                <td>Four Of a Kind</td>
+                <td><img src="assets/Sixes_FourKind.png" class="helper-img"></td>
+                <td>21</td>
+              </tr>
+              <tr>
+                <td>Fullhouse</td>
+                <td><img src="assets/Ones_Fullhouse.png" class="helper-img"></td>
+                <td>25</td>
+              </tr>
+              <tr>
+                <td>Small Straight</td>
+                <td><img src="assets/SmallStraight.png" class="helper-img"></td>
+                <td>30</td>
+              </tr>
+              <tr>
+                <td>Large Straight</td>
+                <td><img src="assets/LargeStraight.png" class="helper-img"></td>
+                <td>40</td>
+              </tr>
+              <tr>
+                <td>Yahtzee</td>
+                <td><img src="assets/Yahtzee.png" class="helper-img"></td>
+                <td>50</td>
+              </tr>
+              <tr>
+                <td>Chance</td>
+                <td><img src="assets/Twos_Fours.png" class="helper-img"></td>
+                <td>13</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="title-block">
+        <div class="seeRules">How To Play</div>
+        <div class="title">Yahtzee</div>
+        <div class="userScore">High Score: <div class="highScore">0</div></div>
+      </div>
+      <span class="gameScore">Total Score: <span class="total">0</span></span>
+      <table class="scorecard">
+        <tr class="category">
+          <th rowspan="2">Upper Section</th>
+          <th>Ones</th>
+          <th>Twos</th>
+          <th>Threes</th>
+          <th>Fours</th>
+          <th>Fives</th>
+          <th>Sixes</th>
+          <th>Upper Total</th>
+          <th>Upper Bonus</th>
+        </tr>
+        <tr class="scores" id="upper">
+          <td class="one">0</td>
+          <td class="two">0</td>
+          <td class="three">0</td>
+          <td class="four">0</td>
+          <td class="five">0</td>
+          <td class="six">0</td>
+          <td class="upperTotal total">0</td>
+          <td class="upperBonus total">0</td>
+        </tr>
+        <tr class="category">
+          <th rowspan="2">Lower Section</th>
+          <th>3 of a Kind</th>
+          <th>4 of a Kind</th>
+          <th>Full House</th>
+          <th>Small Straight</th>
+          <th>Large Straight</th>
+          <th>Yahtzee!</th>
+          <th>Chance</th>
+          <th>Lower Total</th>
+        </tr>
+        <tr class="scores" id="lower">
+          <td class="threekind">0</td>
+          <td class="fourkind">0</td>
+          <td class="fullhouse">0</td>
+          <td class="smStraight">0</td>
+          <td class="lgStraight">0</td>
+          <td class="yahtzee">0</td>
+          <td class="chance">0</td>
+          <td class="lowerTotal total">0</td>
+        </tr>
+      </table>
+      <div class="roll-area">
+        <div class="game-over">
+          <span class="end-text">Game Over</span>
+          <span class="winner end-text">New High Score!</span>
+          <span class="try-again end-text">Try Again!</span>
+        </div>
+
+        <div class="dice-area">
+          <img src="assets/dice-2.png" alt="Dice" class="dice" id="0">
+          <img src="assets/dice-3.png" alt="Dice" class="dice" id="1">
+          <img src="assets/dice-4.png" alt="Dice" class="dice" id="2">
+          <img src="assets/dice-5.png" alt="Dice" class="dice" id="3">
+          <img src="assets/dice-6.png" alt="Dice" class="dice" id="4">
+        </div>
+        <button class="roll-btn">Roll Dice</button>
+        <span class="text">Remaining Rolls: <span class="roll-count">3</span></span>
+        <button class="new-game-btn">New Game</button>
+      </div>
+    </div>
+  <script type="text/javascript" src="manifest.d66c215d89458a154154.js"></script><script type="text/javascript" src="bundle.efe2ab3bee69c586c76a.js"></script></body>
+</html>
