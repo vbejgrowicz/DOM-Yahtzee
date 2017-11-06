@@ -236,6 +236,21 @@ const Game = (() => {
     rollData = __WEBPACK_IMPORTED_MODULE_2__Turn__["a" /* default */].init();
     __WEBPACK_IMPORTED_MODULE_3__DisplayTurn__["a" /* default */].init(rollData);
   };
+  const checkYahtzee = () => {
+    const diceArr = rollData.dice.map(die => die.value);
+    const isUnique = [...new Set(diceArr)];
+    if (isUnique.length === 1) {
+      return true;
+    }
+    return false;
+  };
+  const yahtzeeScored = () => {
+    const findYahtzee = el => Object.values(el).includes('yahtzee');
+    if (gameScore.findIndex(findYahtzee) !== -1) {
+      return true;
+    }
+    return false;
+  };
   return {
     start() {
       initScores();
@@ -263,7 +278,7 @@ const Game = (() => {
           rollData.dice = __WEBPACK_IMPORTED_MODULE_2__Turn__["a" /* default */].rollDice(rollData.dice);
           __WEBPACK_IMPORTED_MODULE_3__DisplayTurn__["a" /* default */].turnInfo(rollData);
         };
-        const rollAnim = setInterval(roll, 100);
+        const rollAnim = setInterval(roll, 50);
         setTimeout(() => {
           clearInterval(rollAnim);
           this.getScores();
@@ -276,11 +291,23 @@ const Game = (() => {
     },
     getScores() {
       calcScore = [];
-      categories.forEach(category => {
-        const newCalc = new __WEBPACK_IMPORTED_MODULE_1__Score__["a" /* default */](null, category, rollData.dice);
-        calcScore.push(newCalc);
-      });
-      this.updateCalcScores();
+      const isYahtzee = checkYahtzee();
+      const isScored = yahtzeeScored();
+      if (isYahtzee && !isScored) {
+        __WEBPACK_IMPORTED_MODULE_3__DisplayTurn__["a" /* default */].yahtzee('show', rollData.dice);
+        setTimeout(() => {
+          this.addScore('lower', 'yahtzee');
+        }, 1000);
+      } else {
+        if (isYahtzee) {
+          __WEBPACK_IMPORTED_MODULE_3__DisplayTurn__["a" /* default */].yahtzee('show', rollData.dice);
+        }
+        categories.forEach(category => {
+          const newCalc = new __WEBPACK_IMPORTED_MODULE_1__Score__["a" /* default */](null, category, rollData.dice);
+          calcScore.push(newCalc);
+        });
+        this.updateCalcScores();
+      }
     },
     updateCalcScores() {
       __WEBPACK_IMPORTED_MODULE_0__DisplayScores__["a" /* default */].showCalc(calcScore);
@@ -542,6 +569,7 @@ const DisplayTurn = {
         this.getDiceElement(idx).style.visibility = 'visible';
         document.querySelector('.scorecard').classList.add('active');
       } else {
+        this.yahtzee('hide', diceArr);
         this.getDiceElement(idx).style.visibility = 'hidden';
         document.querySelector('.scorecard').classList.remove('active');
       }
@@ -574,6 +602,19 @@ const DisplayTurn = {
       document.querySelector('.roll-btn').classList.add('noRolls');
     } else {
       document.querySelector('.roll-btn').classList.remove('noRolls');
+    }
+  },
+  yahtzee(status, dice) {
+    if (status === 'show') {
+      document.querySelector('.currentRoll').style.display = 'block';
+      dice.forEach((each, idx) => {
+        this.getDiceElement(idx).style.opacity = 0.5;
+      });
+    } else {
+      document.querySelector('.currentRoll').style.display = 'none';
+      dice.forEach((each, idx) => {
+        this.getDiceElement(idx).style.opacity = 1;
+      });
     }
   },
   game(status, gameTotals) {
