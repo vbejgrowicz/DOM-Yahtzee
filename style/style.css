@@ -188,6 +188,15 @@ table {
   color: red;
 }
 
+.currentRoll {
+  display: none;
+  position: absolute;
+  margin-left: 125px;
+  z-index: 1;
+  text-shadow: 4px 5px 3px black;
+  font-size: 60px;
+}
+
 .dice {
   height: 90px;
   padding: 3px;
