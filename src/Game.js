@@ -77,7 +77,7 @@ const Game = (() => {
           rollData.dice = Turn.rollDice(rollData.dice);
           DisplayTurn.turnInfo(rollData);
         };
-        const rollAnim = setInterval(roll, 100);
+        const rollAnim = setInterval(roll, 50);
         setTimeout(() => {
           clearInterval(rollAnim);
           this.getScores();
