@@ -31,10 +31,10 @@ export default class Score {
       return score;
     };
 
-    const checkStraight = (sizeScore) => {
+    const checkStraight = (sizeScore, arr) => {
       let val = 0;
-      while (val < isUnique.length - 1) {
-        if ((isUnique[val + 1] - isUnique[val]) === 1) {
+      while (val < arr.length - 1) {
+        if ((arr[val + 1] - arr[val]) === 1) {
           val += 1;
         } else {
           return 0;
@@ -65,13 +65,17 @@ export default class Score {
         }
         return score;
       case 'smStraight':
-        if (isUnique.length >= 4) {
-          score = checkStraight(30);
+        if (isUnique.length === 4) {
+          score = checkStraight(30, isUnique);
+        } else if (isUnique.length === 5) {
+          const firstfour = checkStraight(30, isUnique.slice(0, 4));
+          const lastfour = checkStraight(30, isUnique.slice(1, 5));
+          score = firstfour || lastfour;
         }
         return score;
       case 'lgStraight':
         if (isUnique.length === 5) {
-          score = checkStraight(40);
+          score = checkStraight(40, isUnique);
         }
         return score;
       case 'yahtzee':
