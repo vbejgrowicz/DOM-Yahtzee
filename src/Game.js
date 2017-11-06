@@ -35,6 +35,21 @@ const Game = (() => {
     rollData = Turn.init();
     DisplayTurn.init(rollData);
   };
+  const checkYahtzee = () => {
+    const diceArr = rollData.dice.map(die => die.value);
+    const isUnique = [...new Set(diceArr)];
+    if (isUnique.length === 1) {
+      return true;
+    }
+    return false;
+  };
+  const yahtzeeScored = () => {
+    const findYahtzee = el => Object.values(el).includes('yahtzee');
+    if (gameScore.findIndex(findYahtzee) !== -1) {
+      return true;
+    }
+    return false;
+  };
   return {
     start() {
       initScores();
@@ -75,11 +90,23 @@ const Game = (() => {
     },
     getScores() {
       calcScore = [];
-      categories.forEach((category) => {
-        const newCalc = new Score(null, category, rollData.dice);
-        calcScore.push(newCalc);
-      });
-      this.updateCalcScores();
+      const isYahtzee = checkYahtzee();
+      const isScored = yahtzeeScored();
+      if (isYahtzee && !isScored) {
+        DisplayTurn.yahtzee('show', rollData.dice);
+        setTimeout(() => {
+          this.addScore('lower', 'yahtzee');
+        }, 1000);
+      } else {
+        if (isYahtzee) {
+          DisplayTurn.yahtzee('show', rollData.dice);
+        }
+        categories.forEach((category) => {
+          const newCalc = new Score(null, category, rollData.dice);
+          calcScore.push(newCalc);
+        });
+        this.updateCalcScores();
+      }
     },
     updateCalcScores() {
       DisplayScores.showCalc(calcScore);

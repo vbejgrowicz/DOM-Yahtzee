@@ -8,6 +8,7 @@ const DisplayTurn = {
         this.getDiceElement(idx).style.visibility = 'visible';
         document.querySelector('.scorecard').classList.add('active');
       } else {
+        this.yahtzee('hide', diceArr);
         this.getDiceElement(idx).style.visibility = 'hidden';
         document.querySelector('.scorecard').classList.remove('active');
       }
@@ -40,6 +41,19 @@ const DisplayTurn = {
       document.querySelector('.roll-btn').classList.add('noRolls');
     } else {
       document.querySelector('.roll-btn').classList.remove('noRolls');
+    }
+  },
+  yahtzee(status, dice) {
+    if (status === 'show') {
+      document.querySelector('.currentRoll').style.display = 'block';
+      dice.forEach((each, idx) => {
+        this.getDiceElement(idx).style.opacity = 0.5;
+      });
+    } else {
+      document.querySelector('.currentRoll').style.display = 'none';
+      dice.forEach((each, idx) => {
+        this.getDiceElement(idx).style.opacity = 1;
+      });
     }
   },
   game(status, gameTotals) {
